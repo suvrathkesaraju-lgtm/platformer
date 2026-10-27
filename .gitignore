@@ -1,0 +1,16 @@
+# Godot 4+ specific ignores
+.godot/
+/android/
+
+# Plugins - exclude all addons from the repo
+/addons/
+
+# IDE / editor data
+.editorconfig
+.vscode/
+.idea/
+*.swp
+*~
+
+# OS junk files
+.DS_Store

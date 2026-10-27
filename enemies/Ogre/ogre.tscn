@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://4o0nqct23a7q"]
+
+[ext_resource type="Texture2D" uid="uid://6aj1n6q1ua1q" path="res://enemies/Ogre/Spritesheets/ogre-idle.png" id="1_ck0cs"]
+[ext_resource type="Script" uid="uid://cpxwuq00vo8vm" path="res://enemies/Ogre/ogre.gd" id="1_k4bxn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3um5g"]
+atlas = ExtResource("1_ck0cs")
+region = Rect2(0, 0, 144, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k4bxn"]
+atlas = ExtResource("1_ck0cs")
+region = Rect2(144, 0, 144, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ycg33"]
+atlas = ExtResource("1_ck0cs")
+region = Rect2(288, 0, 144, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w8eg0"]
+atlas = ExtResource("1_ck0cs")
+region = Rect2(432, 0, 144, 80)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0pmar"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3um5g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k4bxn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ycg33")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w8eg0")
+}],
+"loop": 1,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cax0n"]
+height = 38.0
+
+[node name="Ogre" type="CharacterBody2D" unique_id=1142457977]
+script = ExtResource("1_k4bxn")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1311611015]
+position = Vector2(-1.9073486e-06, -29)
+scale = Vector2(0.7, 0.7)
+sprite_frames = SubResource("SpriteFrames_0pmar")
+animation = &"Idle"
+
+[node name="Timer" type="Timer" parent="." unique_id=1813620479]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1368983047]
+position = Vector2(0, -19)
+shape = SubResource("CapsuleShape2D_cax0n")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
